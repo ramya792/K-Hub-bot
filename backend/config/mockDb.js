@@ -1,23 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DB_FILE = path.join(__dirname, '../db_fallback.json');
+// In-memory fallback database to prevent file pollution and large project sizes
+let memoryDb = { conversations: [], messages: [] };
 
 const getDb = () => {
-  if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify({ conversations: [], messages: [] }, null, 2));
-  }
-  try {
-    return JSON.parse(fs.readFileSync(DB_FILE, 'utf8'));
-  } catch (e) {
-    return { conversations: [], messages: [] };
-  }
+  return memoryDb;
 };
 
 const saveDb = (data) => {
-  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
+  memoryDb = data;
 };
 
 export class MockConversation {

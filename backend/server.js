@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import dns from 'dns';
+// import dns from 'dns';
 
 // Force Node to use Google/Cloudflare DNS resolver to resolve MongoDB Atlas SRV records
-dns.setServers(['8.8.8.8', '1.1.1.1']);
+// dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 import cors from 'cors';
 import helmet from 'helmet';
@@ -12,7 +12,7 @@ import conversationRoutes from './routes/conversationRoutes.js';
 import chatRoutes from './routes/chatRoutes.js';
 
 dotenv.config();
-console.log(process.env.MONGODB_URI);
+
 
 const app = express();
 

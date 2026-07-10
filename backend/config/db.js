@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
+// Default to mock database fallback initially to prevent queries from hanging while connecting or on failure
+global.isMockDB = true;
+
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    // Set a short server selection timeout so connection doesn't hang indefinitely
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
     global.isMockDB = false;
   } catch (error) {
