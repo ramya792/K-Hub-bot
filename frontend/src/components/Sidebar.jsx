@@ -163,26 +163,8 @@ const Sidebar = ({ onClose }) => {
           </div>
         )}
       </div>
-
-      {/* User Profile at Bottom */}
-      <div className="p-3.5 border-t border-border-main/50 bg-sidebar-bg flex items-center justify-between">
-        <div className="flex items-center gap-3 overflow-hidden cursor-pointer hover:bg-hover-bg p-1.5 rounded-lg flex-1 transition-colors">
-          <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-semibold text-sm flex-shrink-0">
-            RP
-          </div>
-          <div className="flex flex-col min-w-0">
-            <span className="text-xs font-semibold text-text-main truncate">Ramya Pamarthi</span>
-            <span className="text-[10px] text-text-muted">Go Pro</span>
-          </div>
-        </div>
-        <button className="p-1.5 hover:bg-hover-bg rounded-lg text-text-muted hover:text-text-main transition-colors">
-          <MoreHorizontal className="w-4 h-4" />
-        </button>
-      </div>
     </div>
   );
 };
 
 export default Sidebar;
-
-

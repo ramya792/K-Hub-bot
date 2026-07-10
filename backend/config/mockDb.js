@@ -1,12 +1,26 @@
-// In-memory fallback database to prevent file pollution and large project sizes
-let memoryDb = { conversations: [], messages: [] };
+import fs from 'fs';
+import path from 'path';
+
+const FALLBACK_FILE = path.resolve('db_fallback.json');
 
 const getDb = () => {
-  return memoryDb;
+  try {
+    if (fs.existsSync(FALLBACK_FILE)) {
+      const data = fs.readFileSync(FALLBACK_FILE, 'utf-8');
+      return JSON.parse(data);
+    }
+  } catch (err) {
+    console.error('Error reading fallback database file:', err.message);
+  }
+  return { conversations: [], messages: [] };
 };
 
 const saveDb = (data) => {
-  memoryDb = data;
+  try {
+    fs.writeFileSync(FALLBACK_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err) {
+    console.error('Error writing fallback database file:', err.message);
+  }
 };
 
 export class MockConversation {

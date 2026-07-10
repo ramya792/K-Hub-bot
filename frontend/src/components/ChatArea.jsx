@@ -134,12 +134,6 @@ const ChatArea = () => {
       {/* Input Area Overlay */}
       <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-chat-bg via-chat-bg/95 to-transparent pt-12 pb-4 px-4">
         <div className="max-w-2xl mx-auto relative group">
-          {error && (
-            <div className="relative mb-3 p-3 bg-red-950/80 border border-red-500/30 text-red-200 text-sm rounded-xl text-center shadow-lg animate-fade-in">
-              {error}
-            </div>
-          )}
-          
           <form 
             onSubmit={handleSend}
             className="relative flex items-center bg-input-bg rounded-[26px] border border-border-main p-2 pl-4 pr-2 shadow-sm focus-within:shadow transition-all duration-200"
