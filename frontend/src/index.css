@@ -1,13 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  --color-darkSlate: #0f1117;
-  --color-primaryAccent: #6366f1;
+  --color-chat-bg: var(--bg-primary);
+  --color-sidebar-bg: var(--bg-secondary);
+  --color-hover-bg: var(--bg-accent);
+  --color-text-main: var(--text-primary);
+  --color-text-muted: var(--text-secondary);
+  --color-border-main: var(--border-color);
+  --color-input-bg: var(--input-bg);
+  --color-user-bubble: var(--user-msg-bg);
+  --color-user-text: var(--user-msg-text);
+  --color-icon: var(--icon-color);
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #ffffff;
+  --bg-accent: #ececec;
+  --text-primary: #0d0d0d;
+  --text-secondary: #676767;
+  --border-color: #e3e3e3;
+  --input-bg: #ffffff;
+  --user-msg-bg: #f4f4f4;
+  --user-msg-text: #0d0d0d;
+  --icon-color: #212121;
+}
+
+.dark {
+  --bg-primary: #212121;
+  --bg-secondary: #171717;
+  --bg-accent: #2f2f2f;
+  --text-primary: #ececec;
+  --text-secondary: #b4b4b4;
+  --border-color: #383838;
+  --input-bg: #2f2f2f;
+  --user-msg-bg: #2f2f2f;
+  --user-msg-text: #ececec;
+  --icon-color: #ececec;
 }
 
 @layer base {
   body {
-    @apply bg-darkSlate text-[#FAFAFA] font-sans antialiased;
+    @apply bg-chat-bg text-text-main font-sans antialiased transition-colors duration-200;
     margin: 0;
     padding: 0;
   }
@@ -15,15 +49,17 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
+  background: var(--bg-accent);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--text-secondary);
 }
+
